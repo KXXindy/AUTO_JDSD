@@ -17,6 +17,7 @@ headers = {
     'Accept-Language': 'en-us'
 }
 url = "https://jdsd.gzhu.edu.cn/coctl_gzhu/index_wx.php"
+requests.adapters.DEFAULT_RETRIES = 5
 s = requests.session()
 s.keep_alive = False  # 关闭多余连接
 session.headers = headers
