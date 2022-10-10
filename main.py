@@ -16,9 +16,10 @@ headers = {
     'Referer': 'https://servicewechat.com/wxb78a5743a9eed5bf/15/page-frame.html',
     'Accept-Language': 'en-us'
 }
-session.headers = headers
 url = "https://jdsd.gzhu.edu.cn/coctl_gzhu/index_wx.php"
-
+s = requests.session()
+s.keep_alive = False  # 关闭多余连接
+session.headers = headers
 
 def get_info():
     # 获取个人信息 name:名字 today:今日获得积分 total:总积分
@@ -185,7 +186,7 @@ def serverchan(flag, message=None):
     """
     接入Serverchan通知
     """
-    serverchan_key = ''
+    serverchan_key = 'SCT175801T68hxudT8oSzQH7lIpSc3zwBw'
 
     global text1, text2
     if flag:
@@ -194,7 +195,7 @@ def serverchan(flag, message=None):
     else:
         text1 = '{}刷分失败了快去看看/'.format(time.strftime("%Y-%m-%d", time.localtime()))
         text2 = '快看看'
-    url = f"https://sctapi.ftqq.com/{serverchan_key}.send?title={text1}&desp={text2}"
+    url = "https://sctapi.ftqq.com/{serverchan_key}.send?title={text1}&desp={text2}"
 
     payload = {}
     headers = {}
